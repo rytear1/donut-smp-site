@@ -16,52 +16,76 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
         }
         
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            padding: 15px 20px;
+            flex-shrink: 0;
         }
         
         .header h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
+            font-size: 36px;
+            margin-bottom: 5px;
             letter-spacing: -0.05em;
         }
         
         .subtext {
-            font-size: 14px;
+            font-size: 13px;
             color: #333;
             letter-spacing: -0.05em;
         }
         
         .small-text {
-            font-size: 12px;
+            font-size: 11px;
             color: #666;
             letter-spacing: -0.05em;
-            margin-top: 5px;
+            margin-top: 3px;
         }
         
         .ad-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-width: 1200px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
             width: 100%;
+            flex: 1;
+            padding: 15px;
+            overflow: hidden;
         }
         
         .ad-spot {
             background-color: #f0f0f0;
             border: 2px solid #ccc;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
             overflow: hidden;
             position: relative;
+        }
+        
+        .spot-title {
+            background-color: #333;
+            color: white;
+            width: 100%;
+            padding: 6px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .spot-content {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
         
         .ad-spot img {
@@ -70,16 +94,11 @@
             object-fit: cover;
         }
         
-        .ad-spot.ratio-1 { aspect-ratio: 1 / 1; }
-        .ad-spot.ratio-2 { aspect-ratio: 16 / 9; }
-        .ad-spot.ratio-3 { aspect-ratio: 4 / 3; }
-        .ad-spot.ratio-4 { aspect-ratio: 2 / 1; }
-        .ad-spot.ratio-5 { aspect-ratio: 1 / 2; }
-        
         .placeholder {
             color: #999;
-            font-size: 14px;
+            font-size: 12px;
             text-align: center;
+            padding: 10px;
         }
     </style>
 </head>
@@ -91,35 +110,45 @@
     </div>
     
     <div class="ad-container">
-        <div class="ad-spot ratio-1" id="ad-1">
-            <span class="placeholder">Ad Spot 1</span>
+        <div class="ad-spot" id="ad-1">
+            <div class="spot-title">10m$/day • 1080x1080</div>
+            <div class="spot-content"><span class="placeholder">Spot 1</span></div>
         </div>
-        <div class="ad-spot ratio-2" id="ad-2">
-            <span class="placeholder">Ad Spot 2</span>
+        <div class="ad-spot" id="ad-2">
+            <div class="spot-title">10m$/day • 1920x1080</div>
+            <div class="spot-content"><span class="placeholder">Spot 2</span></div>
         </div>
-        <div class="ad-spot ratio-3" id="ad-3">
-            <span class="placeholder">Ad Spot 3</span>
+        <div class="ad-spot" id="ad-3">
+            <div class="spot-title">10m$/day • 1600x1200</div>
+            <div class="spot-content"><span class="placeholder">Spot 3</span></div>
         </div>
-        <div class="ad-spot ratio-4" id="ad-4">
-            <span class="placeholder">Ad Spot 4</span>
+        <div class="ad-spot" id="ad-4">
+            <div class="spot-title">10m$/day • 2400x1200</div>
+            <div class="spot-content"><span class="placeholder">Spot 4</span></div>
         </div>
-        <div class="ad-spot ratio-5" id="ad-5">
-            <span class="placeholder">Ad Spot 5</span>
+        <div class="ad-spot" id="ad-5">
+            <div class="spot-title">10m$/day • 1080x2160</div>
+            <div class="spot-content"><span class="placeholder">Spot 5</span></div>
         </div>
-        <div class="ad-spot ratio-1" id="ad-6">
-            <span class="placeholder">Ad Spot 6</span>
+        <div class="ad-spot" id="ad-6">
+            <div class="spot-title">10m$/day • 1080x1080</div>
+            <div class="spot-content"><span class="placeholder">Spot 6</span></div>
         </div>
-        <div class="ad-spot ratio-2" id="ad-7">
-            <span class="placeholder">Ad Spot 7</span>
+        <div class="ad-spot" id="ad-7">
+            <div class="spot-title">10m$/day • 1920x1080</div>
+            <div class="spot-content"><span class="placeholder">Spot 7</span></div>
         </div>
-        <div class="ad-spot ratio-3" id="ad-8">
-            <span class="placeholder">Ad Spot 8</span>
+        <div class="ad-spot" id="ad-8">
+            <div class="spot-title">10m$/day • 1600x1200</div>
+            <div class="spot-content"><span class="placeholder">Spot 8</span></div>
         </div>
-        <div class="ad-spot ratio-4" id="ad-9">
-            <span class="placeholder">Ad Spot 9</span>
+        <div class="ad-spot" id="ad-9">
+            <div class="spot-title">10m$/day • 2400x1200</div>
+            <div class="spot-content"><span class="placeholder">Spot 9</span></div>
         </div>
-        <div class="ad-spot ratio-5" id="ad-10">
-            <span class="placeholder">Ad Spot 10</span>
+        <div class="ad-spot" id="ad-10">
+            <div class="spot-title">10m$/day • 1080x2160</div>
+            <div class="spot-content"><span class="placeholder">Spot 10</span></div>
         </div>
     </div>
 </body>
