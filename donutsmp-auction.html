@@ -1,1 +1,270 @@
-<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        body {\n            background: linear-gradient(to bottom, black, white);\n            margin: 0;\n            font-family: Arial, sans-serif;\n        }\n        .box {\n            background-color: rgba(169, 169, 169, 0.8);\n            width: 300px;\n            height: 200px;\n            margin: 20px auto;\n            padding: 20px;\n            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n            border-radius: 10px;\n            position: relative;\n            text-align: center;\n        }\n    </style>\n    <title>Donuts Auction</title>\n</head>\n<body>\n    <div class=\"box\">\n        <h1>Welcome to the Donuts Auction</h1>\n    </div>\n</body>\n</html>\n
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>DonutSMP auction price history & investment portfolios</title>
+        <meta name="description" content="DonutSMP Auction tracker for real-time prices, market trends, and historical data on in-game items. Track your investment portfolio in real-time!">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                background: linear-gradient(180deg, #000000 0%, #ffffff 100%);
+                min-height: 100vh;
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            /* Navigation */
+            nav {
+                display: flex;
+                gap: 1rem;
+                margin-bottom: 3rem;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                padding: 0.75rem 1.5rem;
+                background: rgba(128, 128, 128, 0.3);
+                color: #000;
+                text-decoration: none;
+                border-radius: 0.5rem;
+                font-weight: 600;
+                font-size: 0.875rem;
+                transition: all 0.3s ease;
+                border: 1px solid rgba(128, 128, 128, 0.5);
+            }
+
+            nav a:hover {
+                background: rgba(128, 128, 128, 0.5);
+                border-color: rgba(128, 128, 128, 0.8);
+            }
+
+            /* Header */
+            .header {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+
+            .header h1 {
+                font-size: 3rem;
+                font-weight: 900;
+                color: #000;
+                margin-bottom: 0.5rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+                color: #333;
+                font-weight: 500;
+            }
+
+            /* Search Bar */
+            .search-section {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 3rem;
+            }
+
+            .search-wrapper {
+                position: relative;
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .search-wrapper svg {
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 1.25rem;
+                height: 1.25rem;
+                color: #666;
+            }
+
+            .search-wrapper input {
+                width: 100%;
+                padding: 0.75rem 1rem 0.75rem 3rem;
+                background: rgba(200, 200, 200, 0.4);
+                border: 2px solid rgba(128, 128, 128, 0.5);
+                border-radius: 0.5rem;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+            }
+
+            .search-wrapper input:focus {
+                outline: none;
+                border-color: rgba(128, 128, 128, 0.8);
+                background: rgba(200, 200, 200, 0.6);
+            }
+
+            /* Layout Grid - Easy to modify */
+            .layout-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            /* Box Styles */
+            .box {
+                background: rgba(180, 180, 180, 0.4);
+                border: 2px solid rgba(128, 128, 128, 0.5);
+                border-radius: 0.75rem;
+                padding: 2rem;
+                min-height: 200px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+
+            .box:hover {
+                background: rgba(180, 180, 180, 0.6);
+                border-color: rgba(128, 128, 128, 0.8);
+            }
+
+            .box-title {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: #000;
+                margin-bottom: 0.5rem;
+            }
+
+            .box-content {
+                font-size: 0.95rem;
+                color: #333;
+                font-weight: 500;
+            }
+
+            /* Wide Box - spans full width */
+            .box-wide {
+                grid-column: 1 / -1;
+            }
+
+            /* Tall Box - takes up more height */
+            .box-tall {
+                min-height: 300px;
+            }
+
+            /* Section Title */
+            .section-title {
+                font-size: 1.75rem;
+                font-weight: 700;
+                color: #000;
+                margin: 2rem 0 1.5rem 0;
+                text-align: center;
+            }
+
+            @media (max-width: 768px) {
+                .header h1 {
+                    font-size: 2rem;
+                }
+
+                .layout-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
+                }
+
+                nav {
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Navigation -->
+            <nav>
+                <a href="/">🏠 Home</a>
+                <a href="/portfolio">📈 Portfolio</a>
+                <a href="/about">ℹ️ About</a>
+                <a href="https://discord.gg/donutsmp" target="_blank">💬 Discord</a>
+            </nav>
+
+            <!-- Header -->
+            <div class="header">
+                <h1>🍩 Donut.Auction</h1>
+                <p>The Best Price Tracker for DonutSMP</p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-section">
+                <div class="search-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.34-4.34"></path>
+                    </svg>
+                    <input type="text" placeholder="Search items..."/>
+                </div>
+            </div>
+
+            <!-- Section 1: Popular Investments -->
+            <h2 class="section-title">Popular Investments</h2>
+            <div class="layout-grid">
+                <div class="box">
+                    <div class="box-title">Item 1</div>
+                    <div class="box-content">Your content here</div>
+                </div>
+                <div class="box">
+                    <div class="box-title">Item 2</div>
+                    <div class="box-content">Your content here</div>
+                </div>
+                <div class="box">
+                    <div class="box-title">Item 3</div>
+                    <div class="box-content">Your content here</div>
+                </div>
+            </div>
+
+            <!-- Section 2: Netherite -->
+            <h2 class="section-title">Netherite</h2>
+            <div class="layout-grid">
+                <div class="box">
+                    <div class="box-title">Netherite 1</div>
+                    <div class="box-content">Your content here</div>
+                </div>
+                <div class="box">
+                    <div class="box-title">Netherite 2</div>
+                    <div class="box-content">Your content here</div>
+                </div>
+            </div>
+
+            <!-- Section 3: Most Sold -->
+            <h2 class="section-title">Most Sold</h2>
+            <div class="layout-grid">
+                <div class="box box-tall">
+                    <div class="box-title">Featured Item</div>
+                    <div class="box-content">Tall box example - can hold more content</div>
+                </div>
+                <div class="box">
+                    <div class="box-title">Item A</div>
+                    <div class="box-content">Your content here</div>
+                </div>
+                <div class="box">
+                    <div class="box-title">Item B</div>
+                    <div class="box-content">Your content here</div>
+                </div>
+            </div>
+
+            <!-- Section 4: Wide Box Example -->
+            <h2 class="section-title">Special Section</h2>
+            <div class="layout-grid">
+                <div class="box box-wide">
+                    <div class="box-title">Wide Box - Spans Full Width</div>
+                    <div class="box-content">Perfect for featured content or announcements</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
